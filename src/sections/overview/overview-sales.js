@@ -12,6 +12,8 @@ import {
 } from '@mui/material';
 import { alpha, useTheme } from '@mui/material/styles';
 import { Chart } from 'src/components/chart';
+// Map
+import Map from '../../components/Maps';
 
 const useChartOptions = () => {
   const theme = useTheme();
@@ -105,7 +107,7 @@ const useChartOptions = () => {
 };
 
 export const OverviewSales = (props) => {
-  const { chartSeries, sx } = props;
+  const { orders = [], sx } = props;
   const chartOptions = useChartOptions();
 
   return (
@@ -124,16 +126,11 @@ export const OverviewSales = (props) => {
             Sync
           </Button>
         )}
-        title="Sales"
+        title="Heatmap"
       />
       <CardContent>
-        <Chart
-          height={350}
-          options={chartOptions}
-          series={chartSeries}
-          type="bar"
-          width="100%"
-        />
+        {/* <-- add map here */}
+        <Map />
       </CardContent>
       <Divider />
       <CardActions sx={{ justifyContent: 'flex-end' }}>

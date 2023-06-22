@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import ListBulletIcon from '@heroicons/react/24/solid/ListBulletIcon';
+import CheckCircleIcon from '@heroicons/react/24/solid/CheckCircleIcon'; 
 import {
   Avatar,
   Box,
@@ -10,10 +10,11 @@ import {
   SvgIcon,
   Typography
 } from '@mui/material';
+import ClockIcon from '@heroicons/react/24/solid/ClockIcon';
 
 export const OverviewTasksProgress = (props) => {
   const { value, sx } = props;
-
+  
   return (
     <Card sx={sx}>
       <CardContent>
@@ -29,25 +30,25 @@ export const OverviewTasksProgress = (props) => {
               gutterBottom
               variant="overline"
             >
-              Task Progress
+              Temps de ramassage
             </Typography>
-            <Typography variant="h4">
-              {value}%
+            <Typography variant="h6">
+              {value}
             </Typography>
           </Stack>
           <Avatar
             sx={{
-              backgroundColor: 'warning.main',
+              backgroundColor: 'error.main',
               height: 56,
               width: 56
             }}
           >
             <SvgIcon>
-              <ListBulletIcon />
+              <ClockIcon />
             </SvgIcon>
           </Avatar>
         </Stack>
-        <Box sx={{ mt: 3 }}>
+        <Box sx={{ mt: 5 }}>
           <LinearProgress
             value={value}
             variant="determinate"

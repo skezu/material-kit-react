@@ -10,14 +10,140 @@ import { OverviewTasksProgress } from 'src/sections/overview/overview-tasks-prog
 import { OverviewTotalCustomers } from 'src/sections/overview/overview-total-customers';
 import { OverviewTotalProfit } from 'src/sections/overview/overview-total-profit';
 import { OverviewTraffic } from 'src/sections/overview/overview-traffic';
+import { createContext, useContext } from 'react';
 
 const now = new Date();
+
+
+export const orders = [
+  {
+    id: 'f69f88012978187a6c12897f',
+    ref: 'D1049',
+    amount: 30.5,
+    customer: {
+      name: 'Ekaterina Tankova'
+    },
+    createdAt: 1685016400000,
+    status: 'cours',
+    image: '/assets/trash-img/1.jpg',
+    latitude: '',
+    longitude: '',
+    predictions: [
+      [
+        "Clear plastic bottle",
+        [
+          402.34423828125,
+          1833.075927734375,
+          880.0072021484375,
+          2151.718505859375,
+          0.8004488348960876,
+        ],
+      ],
+      [
+        "Other Carton",
+        [
+          1028.7479248046875,
+          1091.213623046875,
+          1578.9385986328125,
+          1877.279541015625,
+          0.6411442756652832,
+        ],
+      ],
+      [
+        "Paper",
+        [
+          1029.7685546875,
+          1070.0174560546875,
+          1574.3126220703125,
+          1886.70751953125,
+          0.2975366413593292,
+        ],
+      ],
+    ],
+    message: 'Les déchets sont encombrants !',
+  },
+  {
+    id: '9eaa1c7dd4433f413c308ce2',
+    ref: 'D1048',
+    amount: 25.1,
+    customer: {
+      name: 'Cao Yu'
+    },
+    createdAt: 1685016400000,
+    status: 'traité',
+    image: '/assets/products/product-2.png',
+    latitude: '',
+    longitude: '',
+    predictions: [],
+    message: 'Les déchets sont encombrants !',
+  },
+  {
+    id: '01a5230c811bd04996ce7c13',
+    ref: 'D1047',
+    amount: 10.99,
+    customer: {
+      name: 'Alexa Richardson'
+    },
+    createdAt: 1684930000000,
+    status: 'attente',
+    image: '/assets/products/product-5.png',
+    latitude: '',
+    longitude: '',
+    predictions: [],
+    message: 'Les déchets sont encombrants !',
+  },
+  {
+    id: '1f4e1bd0a87cea23cdb83d18',
+    ref: 'D1046',
+    amount: 96.43,
+    customer: {
+      name: 'Anje Keizer'
+    },
+    createdAt: 1684757200000,
+    status: 'cours',
+    image: '/assets/products/product-4.png',
+    latitude: '',
+    longitude: '',
+    predictions: [],
+    message: 'Les déchets sont encombrants !',
+  },
+  {
+    id: '9f974f239d29ede969367103',
+    ref: 'D1045',
+    amount: 32.54,
+    customer: {
+      name: 'Clarke Gillebert'
+    },
+    createdAt: 1674670800000,
+    status: 'traité',
+    image: '/assets/products/product-5.png',
+    latitude: '',
+    longitude: '',
+    predictions: [],
+    message: 'Les déchets sont encombrants !',
+  },
+  {
+    id: 'ffc83c1560ec2f66a1c05596',
+    ref: 'D1044',
+    amount: 16.76,
+    customer: {
+      name: 'Adam Denisov'
+    },
+    createdAt: 1674670800000,
+    status: 'traité',
+    image: '/assets/products/product-6.png',
+    latitude: '',
+    longitude: '',
+    predictions: [],
+    message: 'Les déchets sont encombrants !',
+  }
+];
 
 const Page = () => (
   <>
     <Head>
       <title>
-        Overview | Devias Kit
+        Green AI | Dashboard
       </title>
     </Head>
     <Box
@@ -41,7 +167,7 @@ const Page = () => (
               difference={12}
               positive
               sx={{ height: '100%' }}
-              value="$24k"
+              value="329"
             />
           </Grid>
           <Grid
@@ -50,10 +176,10 @@ const Page = () => (
             lg={3}
           >
             <OverviewTotalCustomers
-              difference={16}
+              difference={2}
               positive={false}
               sx={{ height: '100%' }}
-              value="1.6k"
+              value="48"
             />
           </Grid>
           <Grid
@@ -63,7 +189,7 @@ const Page = () => (
           >
             <OverviewTasksProgress
               sx={{ height: '100%' }}
-              value={75.5}
+              value={"2j 14h 18m"}
             />
           </Grid>
           <Grid
@@ -73,7 +199,7 @@ const Page = () => (
           >
             <OverviewTotalProfit
               sx={{ height: '100%' }}
-              value="$15k"
+              value="3"
             />
           </Grid>
           <Grid
@@ -81,16 +207,7 @@ const Page = () => (
             lg={8}
           >
             <OverviewSales
-              chartSeries={[
-                {
-                  name: 'This year',
-                  data: [18, 16, 5, 8, 3, 14, 14, 16, 17, 19, 18, 20]
-                },
-                {
-                  name: 'Last year',
-                  data: [12, 11, 4, 6, 2, 9, 9, 10, 11, 12, 13, 13]
-                }
-              ]}
+              orders={orders}
               sx={{ height: '100%' }}
             />
           </Grid>
@@ -101,10 +218,11 @@ const Page = () => (
           >
             <OverviewTraffic
               chartSeries={[63, 15, 22]}
-              labels={['Desktop', 'Tablet', 'Phone']}
+              labels={['Bouteilles', 'Cartons', 'Sacs poubelles']}
               sx={{ height: '100%' }}
             />
           </Grid>
+          {/*
           <Grid
             xs={12}
             md={6}
@@ -145,75 +263,14 @@ const Page = () => (
               ]}
               sx={{ height: '100%' }}
             />
-          </Grid>
+            </Grid>*/}
           <Grid
-            xs={12}
-            md={12}
-            lg={8}
+            xs={14}
+            md={14}
+            lg={12}
           >
             <OverviewLatestOrders
-              orders={[
-                {
-                  id: 'f69f88012978187a6c12897f',
-                  ref: 'DEV1049',
-                  amount: 30.5,
-                  customer: {
-                    name: 'Ekaterina Tankova'
-                  },
-                  createdAt: 1555016400000,
-                  status: 'pending'
-                },
-                {
-                  id: '9eaa1c7dd4433f413c308ce2',
-                  ref: 'DEV1048',
-                  amount: 25.1,
-                  customer: {
-                    name: 'Cao Yu'
-                  },
-                  createdAt: 1555016400000,
-                  status: 'delivered'
-                },
-                {
-                  id: '01a5230c811bd04996ce7c13',
-                  ref: 'DEV1047',
-                  amount: 10.99,
-                  customer: {
-                    name: 'Alexa Richardson'
-                  },
-                  createdAt: 1554930000000,
-                  status: 'refunded'
-                },
-                {
-                  id: '1f4e1bd0a87cea23cdb83d18',
-                  ref: 'DEV1046',
-                  amount: 96.43,
-                  customer: {
-                    name: 'Anje Keizer'
-                  },
-                  createdAt: 1554757200000,
-                  status: 'pending'
-                },
-                {
-                  id: '9f974f239d29ede969367103',
-                  ref: 'DEV1045',
-                  amount: 32.54,
-                  customer: {
-                    name: 'Clarke Gillebert'
-                  },
-                  createdAt: 1554670800000,
-                  status: 'delivered'
-                },
-                {
-                  id: 'ffc83c1560ec2f66a1c05596',
-                  ref: 'DEV1044',
-                  amount: 16.76,
-                  customer: {
-                    name: 'Adam Denisov'
-                  },
-                  createdAt: 1554670800000,
-                  status: 'delivered'
-                }
-              ]}
+              orders={orders}
               sx={{ height: '100%' }}
             />
           </Grid>

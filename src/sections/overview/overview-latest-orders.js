@@ -17,29 +17,48 @@ import {
 } from '@mui/material';
 import { Scrollbar } from 'src/components/scrollbar';
 import { SeverityPill } from 'src/components/severity-pill';
+import ProductPage from './overview-latest-orders-popup';
+import { useState } from 'react';
 
 const statusMap = {
-  pending: 'warning',
-  delivered: 'success',
-  refunded: 'error'
+  cours: 'warning',
+  traité: 'success',
+  attente: 'error'
 };
 
 export const OverviewLatestOrders = (props) => {
   const { orders = [], sx } = props;
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleItemClick = (product) => {
+    setSelectedProduct(product);
+  };
+
+  const handleCloseProductPage = () => {
+    setSelectedProduct(null);
+  };
+  
+  const handleValidateProductPage = (product) => {
+    product.status = 'traité';
+    setSelectedProduct(null);
+  }
 
   return (
     <Card sx={sx}>
-      <CardHeader title="Latest Orders" />
+      <CardHeader title="Derniers signalements" />
       <Scrollbar sx={{ flexGrow: 1 }}>
         <Box sx={{ minWidth: 800 }}>
           <Table>
             <TableHead>
               <TableRow>
                 <TableCell>
-                  Order
+                  Preview
                 </TableCell>
                 <TableCell>
-                  Customer
+                  Ticket n°
+                </TableCell>
+                <TableCell>
+                  Contact
                 </TableCell>
                 <TableCell sortDirection="desc">
                   Date
@@ -57,7 +76,34 @@ export const OverviewLatestOrders = (props) => {
                   <TableRow
                     hover
                     key={order.id}
+                    onClick={() => handleItemClick(order)}
                   >
+                    <TableCell>
+                    {
+                  order.image
+                    ? (
+                        <Box
+                          component="img"
+                          src={order.image}
+                          sx={{
+                            borderRadius: 1,
+                            height: 48,
+                            width: 48
+                          }}
+                        />
+                        )
+                        : (
+                          <Box
+                            sx={{
+                              borderRadius: 1,
+                              backgroundColor: 'neutral.200',
+                              height: 48,
+                              width: 48
+                            }}
+                          />
+                        )
+                    }
+                    </TableCell>
                     <TableCell>
                       {order.ref}
                     </TableCell>
@@ -94,6 +140,9 @@ export const OverviewLatestOrders = (props) => {
           View all
         </Button>
       </CardActions>
+      {selectedProduct && (
+        <ProductPage product={selectedProduct} onClose={handleCloseProductPage} onValidate={() => handleValidateProductPage(selectedProduct)}/>
+      )}
     </Card>
   );
 };

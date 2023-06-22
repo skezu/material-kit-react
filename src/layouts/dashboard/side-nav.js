@@ -17,6 +17,7 @@ import { Logo } from 'src/components/logo';
 import { Scrollbar } from 'src/components/scrollbar';
 import { items } from './config';
 import { SideNavItem } from './side-nav-item';
+import TestAPI from 'src/components/api-test';
 
 export const SideNav = (props) => {
   const { open, onClose } = props;
@@ -71,13 +72,13 @@ export const SideNav = (props) => {
                 color="inherit"
                 variant="subtitle1"
               >
-                Devias
+                GreenAI
               </Typography>
               <Typography
                 color="neutral.400"
                 variant="body2"
               >
-                Production
+                Demo
               </Typography>
             </div>
             <SvgIcon
@@ -130,35 +131,24 @@ export const SideNav = (props) => {
             py: 3
           }}
         >
-          <Typography
-            color="neutral.100"
-            variant="subtitle2"
-          >
-            Need more features?
-          </Typography>
-          <Typography
-            color="neutral.500"
-            variant="body2"
-          >
-            Check out our Pro solution template.
-          </Typography>
           <Box
             sx={{
               display: 'flex',
-              mt: 2,
+              mt: 1,
               mx: 'auto',
-              width: '160px',
+              paddingBlockEnd: 3,
+              width: '240px',
               '& img': {
                 width: '100%'
               }
             }}
           >
             <img
-              alt="Go to pro"
-              src="/assets/devias-kit-pro.png"
+              alt="Green AI"
+              src="\assets\logos\logo-greenai.png"
             />
           </Box>
-          <Button
+          {/*<Button
             component="a"
             endIcon={(
               <SvgIcon fontSize="small">
@@ -172,7 +162,8 @@ export const SideNav = (props) => {
             variant="contained"
           >
             Pro Live Preview
-          </Button>
+          </Button>*/}
+          {/*<TestAPI/>*/}
         </Box>
       </Box>
     </Scrollbar>

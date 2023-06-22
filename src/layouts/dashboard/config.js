@@ -19,7 +19,7 @@ export const items = [
     )
   },
   {
-    title: 'Customers',
+    title: 'Utilisateurs',
     path: '/customers',
     icon: (
       <SvgIcon fontSize="small">
@@ -27,6 +27,7 @@ export const items = [
       </SvgIcon>
     )
   },
+  /*
   {
     title: 'Companies',
     path: '/companies',
@@ -35,9 +36,9 @@ export const items = [
         <ShoppingBagIcon />
       </SvgIcon>
     )
-  },
+  },*/
   {
-    title: 'Account',
+    title: 'Compte',
     path: '/account',
     icon: (
       <SvgIcon fontSize="small">
@@ -72,6 +73,7 @@ export const items = [
       </SvgIcon>
     )
   },
+  /*
   {
     title: 'Error',
     path: '/404',
@@ -81,4 +83,5 @@ export const items = [
       </SvgIcon>
     )
   }
+  */
 ];
