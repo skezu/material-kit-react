@@ -56,16 +56,19 @@ export const CustomersTable = (props) => {
                   />
                 </TableCell>
                 <TableCell>
-                  Name
+                  Nom
                 </TableCell>
                 <TableCell>
                   Email
                 </TableCell>
                 <TableCell>
-                  Location
+                  Signalements
                 </TableCell>
                 <TableCell>
-                  Phone
+                  Localisation
+                </TableCell>
+                <TableCell>
+                  Téléphone
                 </TableCell>
                 <TableCell>
                   Signed Up
@@ -111,6 +114,9 @@ export const CustomersTable = (props) => {
                     </TableCell>
                     <TableCell>
                       {customer.email}
+                    </TableCell>
+                    <TableCell>
+                      {customer.nbSignalements}
                     </TableCell>
                     <TableCell>
                       {customer.address.city}, {customer.address.state}, {customer.address.country}

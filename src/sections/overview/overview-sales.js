@@ -126,7 +126,7 @@ export const OverviewSales = (props) => {
             Sync
           </Button>
         )}
-        title="Heatmap"
+        title="Carte des signalements"
       />
       <CardContent>
         {/* <-- add map here */}
